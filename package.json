@@ -1,52 +1,17 @@
 {
-  "name": "mvk12.github.io",
-  "version": "0.1.0",
+  "name": "portfolio",
   "private": true,
-  "author": {
-    "name": "Miguel Angel Vázquez Vázquez",
-    "email": "mvk_12@outlook.com"
-  },
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.24.0",
-    "core-js": "^3.19.1",
-    "vue": "^2.6.14",
-    "vue-router": "^3.5.3"
+    "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.15",
-    "@vue/cli-plugin-eslint": "~4.5.15",
-    "@vue/cli-plugin-router": "~4.5.15",
-    "@vue/cli-service": "~4.5.15",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^8.3.0",
-    "eslint-plugin-vue": "^8.1.1",
-    "node-sass": "^6.0.1",
-    "sass": "^1.43.4",
-    "sass-loader": "^12.3.0",
-    "vue-template-compiler": "^2.6.14"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.13"
+  }
 }
