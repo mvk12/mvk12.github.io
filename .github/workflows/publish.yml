@@ -1,0 +1,24 @@
+name: Publish app
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        uses: borales/actions-yarn@v3.0.0
+        with: 
+          cmd: install --frozen-lockfile --inmutable
+      - name: Build app
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: build
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+
