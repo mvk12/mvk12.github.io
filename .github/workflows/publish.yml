@@ -6,16 +6,30 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v3
-      - name: Install dependencies
-        uses: borales/actions-yarn@v3.0.0
-        with: 
-          cmd: install --frozen-lockfile --inmutable
-      - name: Build app
-        uses: borales/actions-yarn@v3.0.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
         with:
-          cmd: build
+          fetch-depth: 5
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          cache: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm build
+
       - name: Publish
         uses: peaceiris/actions-gh-pages@v3
         with:
