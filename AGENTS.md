@@ -8,8 +8,8 @@ This document provides essential guidance for AI agents working autonomously on 
 
 1. **Always use `pnpm`** - not npm or yarn
 2. **Run type check after changes**: `pnpm exec vue-tsc -b`
-3. **Lint before committing**: `pnpm exec eslint . --fix`
-4. **Branch:** Work on `feat/new-version`
+3. **Apply prettier**: `pnpm exec prettier src --write`
+4. **Lint before committing**: `pnpm exec eslint src --fix`
 
 ## Key Project Facts
 
@@ -27,9 +27,6 @@ src/
 ├── main.ts              # Entry point
 ├── components/          # Reusable components (PascalCase filenames)
 └── assets/              # Static files
-
-.github/
-└── copilot-instructions.md  # Extended guidance (read if needed)
 
 tsconfig.app.json       # App-specific TS config (strict: true)
 eslint.config.mjs       # Linter rules (Vue + TypeScript)
@@ -62,6 +59,7 @@ const derived = computed(() => state.value * 2)
 ```
 
 **Rules:**
+
 - Always use `lang="ts"` in script tags
 - Use `<script setup>` (no Options API)
 - Use `ref()` for mutable state, `computed()` for derived values
@@ -71,25 +69,23 @@ const derived = computed(() => state.value * 2)
 ## Common Tasks
 
 ### Adding a New Component
+
 1. Create `src/components/MyComponent.vue`
 2. Import in `src/App.vue`: `import MyComponent from './components/MyComponent.vue'`
 3. Add to template in `App.vue`
 4. Run: `pnpm exec vue-tsc -b` (must have zero errors)
-5. Run: `pnpm exec eslint . --fix`
+5. Run: `pnpm exec prettier src --write` (format code)
+6. Run: `pnpm exec eslint src --fix` (lint and fix)
 
 ### Testing Changes
-```bash
-pnpm run dev              # Start dev server
-pnpm exec vue-tsc -b     # Type check (must pass)
-pnpm exec eslint . --fix # Fix linting issues
-pnpm run build           # Verify production build works
-```
 
-### Debugging TypeScript Issues
-If you see "Cannot find module 'vue'" errors:
-1. Verify `env.d.ts` has `/// <reference types="vue" />`
-2. Run `pnpm install` to ensure dependencies exist
-3. Message user to restart TypeScript server in VS Code
+```bash
+pnpm run dev                    # Start dev server
+pnpm exec vue-tsc -b            # Type check (must pass)
+pnpm exec prettier src --write  # Format code with Prettier
+pnpm exec eslint src --fix      # Fix linting issues
+pnpm run build                  # Verify production build works
+```
 
 ## Type Safety Requirements
 
@@ -104,6 +100,7 @@ const processData = (data: Record<string, unknown>): void => { ... }
 ```
 
 **In Vue components:**
+
 ```vue
 <script setup lang="ts">
 // ✅ GOOD - typed props
@@ -113,7 +110,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  label: 'Counter'
+  label: 'Counter',
 })
 </script>
 ```
@@ -130,6 +127,7 @@ const props = withDefaults(defineProps<Props>(), {
 - Use conventional commits: `feat:`, `fix:`, `refactor:`, etc.
 
 Example:
+
 ```
 feat: add dark mode toggle component
 fix: resolve TypeScript strict mode errors in HelloWorld
@@ -138,6 +136,7 @@ fix: resolve TypeScript strict mode errors in HelloWorld
 ## Decision-Making Guide
 
 ### When Adding Features
+
 1. ✅ Create component in `src/components/`
 2. ✅ Use `<script setup>` with full TypeScript typing
 3. ✅ Import and use in `App.vue`
@@ -146,23 +145,26 @@ fix: resolve TypeScript strict mode errors in HelloWorld
 6. ❌ Don't use npm/yarn (always pnpm)
 
 ### When Fixing Errors
+
 - Type errors: Check `tsconfig.app.json` and `env.d.ts` first
 - Import errors: Verify file paths (case-sensitive on Linux)
-- Linting errors: Run `pnpm exec eslint . --fix` automatically
+- Formatting errors: Run `pnpm exec prettier src --write` first
+- Linting errors: Run `pnpm exec eslint src --fix` after formatting
 
 ## Useful Commands Reference
 
-| Command | Purpose |
-|---------|---------|
-| `pnpm install` | Install/update dependencies |
-| `pnpm run dev` | Start dev server |
-| `pnpm run build` | Build for production |
-| `pnpm exec vue-tsc -b` | Type check all files |
-| `pnpm exec eslint . --fix` | Lint and auto-fix |
-| `pnpm run preview` | Preview production build |
+| Command                          | Purpose                     |
+| -------------------------------- | --------------------------- |
+| `pnpm install`                   | Install/update dependencies |
+| `pnpm run dev`                   | Start dev server            |
+| `pnpm run build`                 | Build for production        |
+| `pnpm exec vue-tsc -b`           | Type check all files        |
+| `pnpm exec prettier src --write` | Format code with Prettier   |
+| `pnpm exec eslint src --fix`     | Lint and auto-fix           |
+| `pnpm run preview`               | Preview production build    |
 
 ## Need Help?
 
-- Read `.github/copilot-instructions.md` for extended documentation
 - Check `package.json` for exact dependency versions
 - Review `HelloWorld.vue` for component pattern examples
+- This `AGENTS.md` file contains all guidance needed for autonomous AI work
