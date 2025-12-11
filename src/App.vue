@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import AppLayout from './components/AppLayout.vue'
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Miguel Angel Vázquez Vázquez" />
+  <AppLayout>
+    <router-view />
+  </AppLayout>
 </template>
 
 <style>
-#app {
+/* Global app styles kept minimal — page-specific styles are scoped */
+body {
+  margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
