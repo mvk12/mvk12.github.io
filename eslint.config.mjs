@@ -1,6 +1,7 @@
 import pluginJs from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
-import tselint from 'typescript-eslint'
+import tselint from '@typescript-eslint/eslint-plugin'
+import tselParser from '@typescript-eslint/parser'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import vueParser from 'vue-eslint-parser'
 import globals from 'globals'
@@ -22,7 +23,7 @@ export default [
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      parser: tselint.parser,
+      parser: tselParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -35,13 +36,13 @@ export default [
     languageOptions: {
       parser: vueParser,
       parserOptions: {
-        parser: tselint.parser,
+        parser: tselParser,
         ecmaVersion: 'latest',
         sourceType: 'module',
         extraFileExtensions: ['.vue'],
       },
     },
-    plugins: { '@typescript-eslint': tselint.plugin },
+    plugins: { '@typescript-eslint': tselint },
     rules: {
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
@@ -60,7 +61,7 @@ export default [
   // Reglas TypeScript (solo .ts y tsx)
   {
     files: ['**/*.{ts,tsx}'],
-    plugins: { '@typescript-eslint': tselint.plugin },
+    plugins: { '@typescript-eslint': tselint },
     rules: {
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
