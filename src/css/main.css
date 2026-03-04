@@ -1,0 +1,281 @@
+:root {
+  /* Colors - Light Theme */
+  --bg-primary: #fafafa;
+  --bg-secondary: #f0f2f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --border-color: #d0d0d0;
+  --accent: #0052cc;
+  --accent-hover: #0041a3;
+
+  /* Tag/Badge Colors - Light Theme */
+  --tag-bg: #e6f0ff;
+  --tag-text: #0052cc;
+  --tag-border: #b3d9ff;
+
+  /* Transition timing */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+[data-theme='dark'] {
+  /* Colors - Dark Theme */
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #f0f0f0;
+  --text-secondary: #b8b8b8;
+  --text-muted: #888888;
+  --border-color: #2a2a2a;
+  --accent: #5eb3ff;
+  --accent-hover: #7ac2ff;
+
+  /* Tag/Badge Colors - Dark Theme */
+  --tag-bg: #1a3a4d;
+  --tag-text: #5eb3ff;
+  --tag-border: #2d5a7a;
+}
+
+/* Global app styles */
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+.container {
+  padding: 0;
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+.header {
+  background: var(--bg-secondary);
+  padding: 3rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.section {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+}
+
+.icon {
+  font-size: 1.3em;
+  display: inline-block;
+}
+
+p {
+  margin: 0.5rem 0;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.date {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* Experience */
+.experience-item {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.experience-list {
+  padding-left: 1.5rem;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.experience-list li {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-category {
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.skill-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Tag and Badge Base Style */
+.tech-tag,
+.skill-badge {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--tag-border);
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.skill-category p:last-child {
+  margin-bottom: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Skills Highlight */
+.skills-highlight {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Contact */
+.contact-section {
+  background: var(--bg-secondary);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--accent);
+  font-weight: 500;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.contact-link:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.contact-icon {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
