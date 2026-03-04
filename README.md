@@ -1,7 +1,19 @@
-# Vue 3 + Vite
+# 👨‍💻 Mi Portafolio
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Portafolio personal construido con **Vue 3** y **Vite**. Muestra mis proyectos, habilidades y experiencia en desarrollo web.
 
-## Recommended IDE Setup
+## 🚀 Características
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- Diseño moderno y responsivo
+- Cambio de tema (claro/oscuro)
+- Navegación smooth
+- Código limpio con TypeScript
+
+## 📦 Instalación
+
+```bash
+pnpm install
+pnpm run dev
+```
+
+## 🔗 [Ver en vivo](https://mvk12.github.io)
