@@ -5,7 +5,7 @@ import NavBar from './NavBar.vue'
 <template>
   <div class="layout">
     <NavBar />
-    <main>
+    <main id="main">
       <slot />
     </main>
   </div>

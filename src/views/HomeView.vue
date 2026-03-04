@@ -9,7 +9,7 @@
 
     <section class="section">
       <h2>
-        <span class="icon">💡</span>
+        <span class="icon" aria-hidden="true">💡</span>
         Resumen
       </h2>
       <p>
@@ -22,7 +22,7 @@
 
     <section class="section">
       <h2>
-        <span class="icon">💼</span>
+        <span class="icon" aria-hidden="true">💼</span>
         Experiencia
       </h2>
       <div class="experience-item">
@@ -65,7 +65,7 @@
 
     <section class="section">
       <h2>
-        <span class="icon">🎓</span>
+        <span class="icon" aria-hidden="true">🎓</span>
         Educación
       </h2>
       <div class="education-item">
@@ -79,7 +79,7 @@
 
     <section class="section">
       <h2>
-        <span class="icon">🛠️</span>
+        <span class="icon" aria-hidden="true">🛠️</span>
         Conocimientos y herramientas
       </h2>
       <div class="skills-grid">
@@ -145,7 +145,7 @@
 
     <section class="section">
       <h2>
-        <span class="icon">⭐</span>
+        <span class="icon" aria-hidden="true">⭐</span>
         Habilidades
       </h2>
       <div class="skills-highlight">
@@ -160,17 +160,23 @@
 
     <section class="section contact-section">
       <h2>
-        <span class="icon">📧</span>
+        <span class="icon" aria-hidden="true">📧</span>
         Contacto
       </h2>
       <div class="contact-links">
-        <a href="https://github.com/mvk12" target="_blank" class="contact-link">
+        <a
+          href="https://github.com/mvk12"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-link"
+        >
           <span class="contact-icon">GitHub</span>
           mvk12
         </a>
         <a
           href="https://www.linkedin.com/in/miguel-angel-v%C3%A1zquez-v%C3%A1zquez-b2a37a106/"
           target="_blank"
+          rel="noopener noreferrer"
           class="contact-link"
         >
           <span class="contact-icon">LinkedIn</span>

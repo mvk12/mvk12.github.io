@@ -24,14 +24,22 @@ const { isDark, toggleTheme } = useTheme()
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
   border-radius: 6px;
   color: var(--text-primary);
+  touch-action: manipulation;
 }
 
 .theme-toggle:hover {
   background-color: var(--bg-secondary);
   border-color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .toggle-icon {
