@@ -17,18 +17,21 @@ const { isDark, toggleTheme } = useTheme()
 <style scoped>
 .theme-toggle {
   background: none;
-  border: none;
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  font-size: 1.5rem;
-  padding: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  color: var(--text-primary);
 }
 
 .theme-toggle:hover {
-  transform: scale(1.1);
+  background-color: var(--bg-secondary);
+  border-color: var(--accent);
 }
 
 .toggle-icon {

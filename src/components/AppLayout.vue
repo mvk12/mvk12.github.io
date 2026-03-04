@@ -22,7 +22,6 @@ import NavBar from './NavBar.vue'
 
 .layout main {
   flex: 1;
-  padding: 1rem;
   background-color: var(--bg-primary);
 }
 </style>
