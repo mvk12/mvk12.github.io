@@ -1,170 +1,173 @@
 # Agent Instructions for mvk12.github.io
 
-## Quick Start for AI Agents
+This repository is a Vue 3 + Vite portfolio with TypeScript in strict mode.
+Use this file as the single source of truth for build/lint/test commands and
+code style conventions for agentic coding.
 
-This document provides essential guidance for AI agents working autonomously on this Vue 3 + Vite portfolio project.
+## Runtime + Tooling
 
-### Before You Start
+- Package manager: **pnpm only** (do not use npm or yarn).
+- Framework: Vue 3 + Vue Router.
+- Build tool: Vite (rolldown-vite).
+- TypeScript: strict mode is enabled in `tsconfig.app.json`.
+- Styling: global CSS in `src/css/main.css` plus scoped SFC styles.
 
-1. **Always use `pnpm`** - not npm or yarn
-2. **Run type check after changes**: `pnpm exec vue-tsc -b`
-3. **Apply prettier**: `pnpm exec prettier src --write`
-4. **Lint before committing**: `pnpm exec eslint src --fix`
+## Commands (Build / Lint / Type Check / Format)
 
-## Key Project Facts
+Install:
 
-- **Framework:** Vue 3.5.25 with `<script setup>` (Composition API)
-- **Build Tool:** Vite 7.2.7
-- **Language:** TypeScript 5.9.3 (strict mode ON)
-- **Package Manager:** pnpm (exclusive)
-- **Dev Server:** `http://localhost:5173` (via `pnpm run dev`)
+```bash
+pnpm install
+```
 
-## File Structure to Know
+Dev server:
+
+```bash
+pnpm run dev
+```
+
+Production build:
+
+```bash
+pnpm run build
+```
+
+Preview build:
+
+```bash
+pnpm run preview
+```
+
+Type check (required after changes):
+
+```bash
+pnpm exec vue-tsc -b
+```
+
+Format (Prettier):
+
+```bash
+pnpm exec prettier src --write
+```
+
+Lint (ESLint + auto-fix):
+
+```bash
+pnpm exec eslint src --fix
+```
+
+Testing:
+
+- No test runner configured in `package.json`.
+- Single test execution is **not available** until a test framework is added.
+- If you add a test runner, document the exact single-test command here.
+
+## Project Structure
 
 ```
 src/
-├── App.vue              # Root component - import all features here
-├── main.ts              # Entry point
-├── components/          # Reusable components (PascalCase filenames)
-└── assets/              # Static files
-
-tsconfig.app.json       # App-specific TS config (strict: true)
-eslint.config.mjs       # Linter rules (Vue + TypeScript)
-vite.config.ts          # Build configuration
+  App.vue                # Root component
+  main.ts                # Entry point
+  router/                # Vue Router config
+  components/            # Reusable components (PascalCase)
+  views/                 # Route views
+  composables/           # Reusable composables
+  css/                   # Global styles
 ```
 
-## Component Creation Pattern
+Key config files:
 
-Always follow this template when creating new components:
+- `eslint.config.mjs` (Vue + TypeScript rules)
+- `tsconfig.app.json` (strict type checking)
+- `.prettierrc.mts` (Prettier rules)
+
+## Coding Conventions
+
+### Vue SFCs
+
+- Always use `<script setup lang="ts">`.
+- Prefer Composition API (`ref`, `computed`, `watch`, `onMounted`).
+- Components are PascalCase filenames (e.g., `ThemeToggle.vue`).
+- Use `<style scoped>` for component-local styles unless global is required.
+- Keep template markup semantic (headings, lists, `main`, `section`).
+
+### TypeScript + Types
+
+- No implicit `any`. Provide explicit types for function params/returns.
+- In SFCs, define props with `interface` + `defineProps`.
+- Use `withDefaults` for optional props with defaults.
+- Prefer type-only imports (`import type { ... }`) when applicable.
+
+### Imports
+
+- Order: external libs → type-only imports → local modules.
+- Use relative imports for local modules (e.g., `./components/AppLayout.vue`).
+- Keep imports grouped with a blank line between groups.
+
+### Naming
+
+- Components: PascalCase.
+- Composables: `useX` (e.g., `useTheme`).
+- Variables and functions: camelCase.
+- CSS classes: kebab-case.
+- Routes: short, lowercase names (e.g., `home`, `projects`).
+
+### Formatting
+
+Prettier config (`.prettierrc.mts`):
+
+- `singleQuote: true`
+- `semi: false`
+- `trailingComma: 'es5'`
+- `tabWidth: 2`
+
+### ESLint
+
+- Vue strongly-recommended rules are enabled.
+- `@typescript-eslint/no-unused-vars` is **warn** with `_`-prefixed ignores.
+- Prefer removing unused code, not disabling rules.
+
+### Error Handling
+
+- Handle browser APIs defensively (e.g., localStorage, matchMedia).
+- Avoid throwing in UI code; instead fail gracefully and keep UI responsive.
+- For async work, surface errors via UI state when feasible.
+
+## Component Template (Preferred Pattern)
 
 ```vue
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-// All reactive state and computed values here
-const state = ref(0)
-const derived = computed(() => state.value * 2)
+const count = ref(0)
+const doubled = computed(() => count.value * 2)
 </script>
 
 <template>
-  <div class="component">
-    <p>{{ derived }}</p>
-    <button @click="state++">Increment</button>
+  <div class="example">
+    <p>{{ doubled }}</p>
+    <button @click="count++">Increment</button>
   </div>
 </template>
 
 <style scoped>
-/* Component-specific styles */
+.example {
+  display: grid;
+  gap: 0.5rem;
+}
 </style>
 ```
 
-**Rules:**
+## When Adding a New Component
 
-- Always use `lang="ts"` in script tags
-- Use `<script setup>` (no Options API)
-- Use `ref()` for mutable state, `computed()` for derived values
-- Filename must be PascalCase: `MyComponent.vue`
-- Import and register in `App.vue`
+1. Create `src/components/MyComponent.vue`.
+2. Import in `src/App.vue` or a view/parent component.
+3. Wire it into the template.
+4. Run `pnpm exec vue-tsc -b`.
+5. Run `pnpm exec prettier src --write`.
+6. Run `pnpm exec eslint src --fix`.
 
-## Common Tasks
+## Git + Commits
 
-### Adding a New Component
-
-1. Create `src/components/MyComponent.vue`
-2. Import in `src/App.vue`: `import MyComponent from './components/MyComponent.vue'`
-3. Add to template in `App.vue`
-4. Run: `pnpm exec vue-tsc -b` (must have zero errors)
-5. Run: `pnpm exec prettier src --write` (format code)
-6. Run: `pnpm exec eslint src --fix` (lint and fix)
-
-### Testing Changes
-
-```bash
-pnpm run dev                    # Start dev server
-pnpm exec vue-tsc -b            # Type check (must pass)
-pnpm exec prettier src --write  # Format code with Prettier
-pnpm exec eslint src --fix      # Fix linting issues
-pnpm run build                  # Verify production build works
-```
-
-## Type Safety Requirements
-
-**Strict mode is enabled.** Every issue must be resolved:
-
-```typescript
-// ❌ BAD - implicit `any`
-const processData = (data) => { ... }
-
-// ✅ GOOD - explicit types
-const processData = (data: Record<string, unknown>): void => { ... }
-```
-
-**In Vue components:**
-
-```vue
-<script setup lang="ts">
-// ✅ GOOD - typed props
-interface Props {
-  count: number
-  label?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  label: 'Counter',
-})
-</script>
-```
-
-## Build & Deployment
-
-- Production build: `pnpm run build` (output: `dist/`)
-- Preview: `pnpm run preview`
-- The project is deployed to GitHub Pages (branch context: mvk12/mvk12.github.io)
-
-## Git & Commits
-
-- **Repository:** mvk12/mvk12.github.io
-- Use conventional commits: `feat:`, `fix:`, `refactor:`, etc.
-
-Example:
-
-```
-feat: add dark mode toggle component
-fix: resolve TypeScript strict mode errors in HelloWorld
-```
-
-## Decision-Making Guide
-
-### When Adding Features
-
-1. ✅ Create component in `src/components/`
-2. ✅ Use `<script setup>` with full TypeScript typing
-3. ✅ Import and use in `App.vue`
-4. ✅ Run type check + linting
-5. ❌ Don't modify tsconfig without asking
-6. ❌ Don't use npm/yarn (always pnpm)
-
-### When Fixing Errors
-
-- Type errors: Check `tsconfig.app.json` and `env.d.ts` first
-- Import errors: Verify file paths (case-sensitive on Linux)
-- Formatting errors: Run `pnpm exec prettier src --write` first
-- Linting errors: Run `pnpm exec eslint src --fix` after formatting
-
-## Useful Commands Reference
-
-| Command                          | Purpose                     |
-| -------------------------------- | --------------------------- |
-| `pnpm install`                   | Install/update dependencies |
-| `pnpm run dev`                   | Start dev server            |
-| `pnpm run build`                 | Build for production        |
-| `pnpm exec vue-tsc -b`           | Type check all files        |
-| `pnpm exec prettier src --write` | Format code with Prettier   |
-| `pnpm exec eslint src --fix`     | Lint and auto-fix           |
-| `pnpm run preview`               | Preview production build    |
-
-## Need Help?
-
-- Check `package.json` for exact dependency versions
-- Review `HelloWorld.vue` for component pattern examples
-- This `AGENTS.md` file contains all guidance needed for autonomous AI work
+- Use conventional commits: `feat:`, `fix:`, `refactor:`, `chore:`, etc.
+- Keep commits focused on one logical change.
