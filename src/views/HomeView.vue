@@ -26,7 +26,10 @@
         Experiencia
       </h2>
       <div class="experience-item">
-        <h3>🏫 Lirmi — Desarrollador Web Full Stack</h3>
+        <h3>
+          <span class="icon" aria-hidden="true">🏫</span>
+          Lirmi — Desarrollador Web Full Stack
+        </h3>
         <p class="date">Septiembre 2020 - Noviembre 2025</p>
         <ul class="experience-list">
           <li>
@@ -49,7 +52,10 @@
       </div>
 
       <div class="experience-item">
-        <h3>💻 I.Net Soluciones — Desarrollador Web</h3>
+        <h3>
+          <span class="icon" aria-hidden="true">💻</span>
+          I.Net Soluciones — Desarrollador Web
+        </h3>
         <p class="date">Diciembre 2016 – Abril 2020</p>
         <ul class="experience-list">
           <li>
